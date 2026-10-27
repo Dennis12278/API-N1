@@ -1,5 +1,6 @@
 ﻿using DreamApi.Data;
 using DreamApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DreamApi.Services
 {
@@ -12,40 +13,57 @@ namespace DreamApi.Services
             this.context = context;
         }
 
-        public List<Calendario> Listar()
+        public List<Calendario> Listar(int? idUsuario)
         {
-            return context.Calendarios.ToList();
+            IQueryable<Calendario> consulta = context.Calendarios.AsNoTracking();
+
+            if (idUsuario.HasValue)
+            {
+                consulta = consulta.Where(c => c.IdUsuario == idUsuario.Value);
+            }
+
+            return consulta.OrderBy(c => c.Data).ToList();
         }
 
-        public void Adicionar(Calendario calendario)
+        public Calendario Adicionar(Calendario calendario)
         {
             context.Calendarios.Add(calendario);
             context.SaveChanges();
+
+            return calendario;
         }
 
-        public void Editar(Calendario calendario)
+        public bool Editar(Calendario calendario)
         {
-            Calendario calendarioExistente = context.Calendarios.Find(calendario.Id);
+            Calendario? existente = context.Calendarios.Find(calendario.Id);
 
-            if (calendarioExistente != null)
+            if (existente == null)
             {
-                calendarioExistente.IdUsuario = calendario.IdUsuario;
-                calendarioExistente.Data = calendario.Data;
-                calendarioExistente.Descricao = calendario.Descricao;
-
-                context.SaveChanges();
+                return false;
             }
+
+            existente.IdUsuario = calendario.IdUsuario;
+            existente.Data = calendario.Data;
+            existente.Descricao = calendario.Descricao;
+
+            context.SaveChanges();
+
+            return true;
         }
 
-        public void Excluir(int id)
+        public bool Excluir(int id)
         {
-            Calendario calendario = context.Calendarios.Find(id);
+            Calendario? calendario = context.Calendarios.Find(id);
 
-            if (calendario != null)
+            if (calendario == null)
             {
-                context.Calendarios.Remove(calendario);
-                context.SaveChanges();
+                return false;
             }
+
+            context.Calendarios.Remove(calendario);
+            context.SaveChanges();
+
+            return true;
         }
     }
 }

@@ -16,27 +16,27 @@ namespace DreamApi.Controllers
         }
 
         [HttpGet]
-        public List<Calendario> Listar()
+        public List<Calendario> Listar([FromQuery] int? idUsuario)
         {
-            return calendarioService.Listar();
+            return calendarioService.Listar(idUsuario);
         }
 
         [HttpPost]
-        public void Adicionar(Calendario calendario)
+        public IActionResult Adicionar([FromBody] Calendario calendario)
         {
-            calendarioService.Adicionar(calendario);
+            return Ok(calendarioService.Adicionar(calendario));
         }
 
         [HttpPut]
-        public void Editar(Calendario calendario)
+        public IActionResult Editar([FromBody] Calendario calendario)
         {
-            calendarioService.Editar(calendario);
+            return calendarioService.Editar(calendario) ? Ok() : NotFound();
         }
 
         [HttpDelete("{id}")]
-        public void Excluir(int id)
+        public IActionResult Excluir(int id)
         {
-            calendarioService.Excluir(id);
+            return calendarioService.Excluir(id) ? Ok() : NotFound();
         }
     }
 }
