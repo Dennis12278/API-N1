@@ -25,20 +25,19 @@ namespace DreamApi.Services
 
         public void Editar(Grupo grupo)
         {
-            Grupo grupoExistente = context.Grupos.Find(grupo.Id);
+            Grupo? grupoExistente = context.Grupos.Find(grupo.Id);
 
             if (grupoExistente != null)
             {
                 grupoExistente.Nome = grupo.Nome;
                 grupoExistente.Descricao = grupo.Descricao;
-
                 context.SaveChanges();
             }
         }
 
         public void Excluir(int id)
         {
-            Grupo grupo = context.Grupos.Find(id);
+            Grupo? grupo = context.Grupos.Find(id);
 
             if (grupo != null)
             {

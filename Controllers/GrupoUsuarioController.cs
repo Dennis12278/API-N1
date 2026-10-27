@@ -21,6 +21,12 @@ namespace DreamApi.Controllers
             return grupoUsuarioService.Listar();
         }
 
+        [HttpGet("Seguidos")]
+        public List<GrupoSeguidoDto> ListarSeguidos([FromQuery] int idUsuario)
+        {
+            return grupoUsuarioService.ListarSeguidos(idUsuario);
+        }
+
         [HttpPost]
         public void Adicionar(GrupoUsuario grupoUsuario)
         {
