@@ -31,7 +31,9 @@ builder.Services.AddScoped<CompartilhamentoService>();
 builder.Services.AddScoped<NotificacaoService>();
 builder.Services.AddScoped<CalendarioService>();
 builder.Services.AddScoped<ColecaoService>();
+builder.Services.AddScoped<ColecaoDocumentoService>();
 builder.Services.AddScoped<HistoricoLeituraService>();
+
 
 builder.Services.AddOpenApi();
 

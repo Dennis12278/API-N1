@@ -97,6 +97,25 @@ namespace DreamApi.Migrations
                     b.ToTable("Colecoes");
                 });
 
+            modelBuilder.Entity("DreamApi.Models.ColecaoDocumento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdColecao")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdDocumento")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ColecoesDocumentos");
+                });
+
             modelBuilder.Entity("DreamApi.Models.Compartilhamento", b =>
                 {
                     b.Property<int>("Id")
@@ -200,6 +219,31 @@ namespace DreamApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GruposUsuarios");
+                });
+
+            modelBuilder.Entity("DreamApi.Models.HistoricoLeitura", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DataUltimaLeitura")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdDocumento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Progresso")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HistoricosLeitura");
                 });
 
             modelBuilder.Entity("DreamApi.Models.Notificacao", b =>

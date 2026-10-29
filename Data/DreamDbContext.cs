@@ -21,6 +21,9 @@ namespace DreamApi.Data
         public DbSet<Notificacao> Notificacoes { get; set; }
         public DbSet<Calendario> Calendarios { get; set; }
         public DbSet<Colecao> Colecoes { get; set; }
+        public DbSet<HistoricoLeitura> HistoricosLeitura { get; set; }
+        public DbSet<ColecaoDocumento> ColecoesDocumentos { get; set; }
+
 
         // Toda data lida do banco passa a ser marcada como UTC
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
