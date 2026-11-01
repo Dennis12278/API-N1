@@ -23,6 +23,7 @@ namespace DreamApi.Data
         public DbSet<Colecao> Colecoes { get; set; }
         public DbSet<HistoricoLeitura> HistoricosLeitura { get; set; }
         public DbSet<ColecaoDocumento> ColecoesDocumentos { get; set; }
+        public DbSet<ColecaoCurtida> ColecoesCurtidas { get; set; }
         public DbSet<MarcadorPublicacao> MarcadoresPublicacao { get; set; }
 
 
