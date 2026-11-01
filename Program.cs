@@ -32,6 +32,7 @@ builder.Services.AddScoped<NotificacaoService>();
 builder.Services.AddScoped<CalendarioService>();
 builder.Services.AddScoped<ColecaoService>();
 builder.Services.AddScoped<ColecaoDocumentoService>();
+builder.Services.AddScoped<MarcadorPublicacaoService>();
 builder.Services.AddScoped<HistoricoLeituraService>();
 
 

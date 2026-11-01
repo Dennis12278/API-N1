@@ -23,6 +23,7 @@ namespace DreamApi.Data
         public DbSet<Colecao> Colecoes { get; set; }
         public DbSet<HistoricoLeitura> HistoricosLeitura { get; set; }
         public DbSet<ColecaoDocumento> ColecoesDocumentos { get; set; }
+        public DbSet<MarcadorPublicacao> MarcadoresPublicacao { get; set; }
 
 
         // Toda data lida do banco passa a ser marcada como UTC

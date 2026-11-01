@@ -246,6 +246,29 @@ namespace DreamApi.Migrations
                     b.ToTable("HistoricosLeitura");
                 });
 
+            modelBuilder.Entity("DreamApi.Models.MarcadorPublicacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdDocumento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Marcador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MarcadoresPublicacao");
+                });
+
             modelBuilder.Entity("DreamApi.Models.Notificacao", b =>
                 {
                     b.Property<int>("Id")
