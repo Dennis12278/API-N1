@@ -97,6 +97,25 @@ namespace DreamApi.Migrations
                     b.ToTable("Colecoes");
                 });
 
+            modelBuilder.Entity("DreamApi.Models.ColecaoCurtida", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("IdColecao")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ColecoesCurtidas");
+                });
+
             modelBuilder.Entity("DreamApi.Models.ColecaoDocumento", b =>
                 {
                     b.Property<int>("Id")
@@ -109,6 +128,9 @@ namespace DreamApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("IdDocumento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Ordem")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
